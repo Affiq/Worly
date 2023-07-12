@@ -1,2 +1,5 @@
 # Worly
-An environmental website allowing users to take quizzes and estimate their carbon footprint
+<p> An environmental website allowing users to take quizzes and estimate their carbon footprint. Implemented using Spring Boot, JPA and Thymeleaf for page rendering. The websites allow users to login as regular users, or administrators. Administrators are able to create new quiz templates, consisting of questions, answers and scores. Users are then able to login and answer these quiz templates to achieve a score. These scores help capture a user's carbon footprint depending on the answers they have chosen, as well as showing the quiz results on how users can better improve their score and hence their carbon footprint. </p> 
+
+<h2> Controller Overview </h2>
+Typically, a Front-End server such as react will handle the page rendering and display, which will send HTTP requests (usually Axiom for React JS) to the Back-End server (Spring Boot). However, due to time constraints, the user will directly interact with the backend which is then responsible for both display and business logic.
