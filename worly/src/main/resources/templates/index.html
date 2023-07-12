@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/sign.css"></link>
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"></link>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    
+    <title>Login page</title>
+    </head>
+    <body>
+        <div class="main">
+        <div class="container">
+          <div id="square">
+            <div class="front">
+              <h1>Login</h1>
+              <form id="front" action="#" th:action="@{/api/sign/in}" method="post" th:object="${loginRequest}">
+                <input required type="email" name="email" id="email" placeholder="Email" th:field="${loginRequest.email}"></input>
+                <input required type="password" name="password" id="password" placeholder="Password" th:field="${loginRequest.password}"></input>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <div class="right">
+              <h1>Create a new account</h1>
+              <form id="right" action="#" th:action="@{/api/sign/up}" method="post" th:object="${request}">
+                <input  type="text"  id="firstName" placeholder="First name" th:field="${request.firstName}"></input>
+                <input  type="text"  id="lastName" placeholder="Last name"th:field="${request.lastName}"></input>
+                <input required type="text"  id="email" placeholder="Email" th:field="${request.email}"></input>
+                <input  type="password"  id="password" placeholder="Password" th:field="${request.password}" ></input>
+                <input  type="text"  id="postcode" placeholder="Postcode"th:field="${request.postcode}"></input>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <div class="left">
+              <h1>Enter your email to reset password</h1>
+               <form id="left" action="#"  th:action="@{/api/sign/forget}" method="post" th:object="${passwordRequest}">
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  th:field="${passwordRequest.email}"
+                ></input>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="leftSide" type="button">Forgot Password</button>
+            <button id="frontSide" type="button">Login</button>
+            <button id="rightSide" type="button">Sign up</button>
+          </div>
+        </div>
+      </div>
+      <script>
+      const square = document.getElementById("square");
+      const frontSide = document.getElementById("frontSide");
+      const rightSide = document.getElementById("rightSide");
+      const leftSide = document.getElementById("leftSide");
+
+      frontSide.addEventListener("click", () => {
+        frontSide.style.display = "none";
+        rightSide.style.display = "block";
+        leftSide.style.display = "block";
+        square.style.transform = "rotate3d(0, 0, 0, 90deg)";
+        document.title = "Login page";
+      });
+
+      rightSide.addEventListener("click", () => {
+        rightSide.style.display = "none";
+        frontSide.style.display = "block";
+        leftSide.style.display = "block";
+        square.style.transform = "rotate3d(0, -1, 0, 90deg)";
+        document.title = "Sign up page";
+      });
+
+      leftSide.addEventListener("click", () => {
+        leftSide.style.display = "none";
+        frontSide.style.display = "block";
+        rightSide.style.display = "none";
+        square.style.transform = "rotate3d(0, 1, 0, 90deg)";
+        document.title = "Forgot password page";
+      });
+    </script>
+ </body>
+</html>
+
+      

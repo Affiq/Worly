@@ -1,0 +1,103 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+			<meta charset="utf-8">
+			<meta name="keywords" content="">
+			<meta name="description" content="this is a User Profile page where users will be able to update their personal information">
+			<meta name="author" content="Group32">
+			<meta http-equiv="refresh" content="1000">
+				<title>User Profile</title>
+					<link rel="stylesheet" href="/css/profile.css" type="text/css"/>
+
+
+  			<script type="text/javascript" src="js/custom.js"></script>
+	</head>
+
+		<body onload='document.form1.text1.focus()'>
+			
+			<div class="main">
+	
+				<div class="container">
+					
+					<div id="square">
+								
+                        <div class="front">
+                        
+
+						<!-- Thymeleaf will be used here, which may look confusing -->
+						<!-- We can make Thymeleaf use values by adding th: infront of an attribute -->
+						<!-- Special attributes are th:object to show what entire object the form represents -->
+						<!-- And th:field to show what field/variable of the object this tag represents -->
+						<!-- More details are found below: -->
+						<!-- https://www.codejava.net/frameworks/spring-boot/spring-boot-thymeleaf-form-handling-tutorial -->
+						<!-- We still need to map the action to something -->
+						
+						<!-- First thing we do is say that this entire form represents a user object sent as a model attribute -->
+						<form id="formimg" name="formimg" action="#" th:action="@{/api/sign/home}" method="post" th:object="${User}"><input id="img" type= "Image" img src="/photos/Home/Worly-Logo-F.png"  height="80" width="80"/></form>
+						<!-- We use $ when representing objects and * when representing fields -->
+    					<form id= "form1" name="form1" action="#" th:action="@{/api/details}" method="post" th:object="${User}" >
+    					
+
+   						 <label for="fname">First Name</label>
+    						<input type="text" id="fname" name="firstname" placeholder="Your name.." th:value="*{forename}" th:field="*{forename}">
+							<br>
+							
+							<!-- In the code above,we have added a th:value so whatever value was in the model is placed here by default -->
+							<!-- We have also added th:field to say it represents this field in the object stated in the form tag -->
+							<!-- Alternatively we could've written th:field="${User.forename} if we didn't write the object in the form" -->
+							<!-- All the comments above are just for understanding, you may delete it once you understand just to remove the clutter -->
+							<!-- Don't delete the comments below though -->
+
+
+    					<label for="lname">Last Name</label>
+    						<input type="text" id="lname" name="lastname" placeholder="Your last name.." th:value="*{surname}" th:field="*{surname}">
+							<br>
+
+
+						<label for="email">Email</label>
+						    <input type="text" id="email" name="email" placeholder="Your email address.." th:value="*{email}" th:field="*{email}">
+							<br>
+						
+						<label for="postcode">Post Code</label>
+						    <input type="text" id="postcode" name="postcode" placeholder="Your post code here.." th:value="*{postcode}" th:field="*{postcode}">
+							<br>
+							
+							
+							<input  input type="submit" value="Change details" class="submit">
+							
+						<!-- Should we let users change their email? Great deal of business logic may be needed thereafter -->
+						<!-- If so, email validator is needed here -->
+						
+					<!-- Might make reset password page seperate? Or going to have to declutter the page
+						<label for="lname">Current Password</label>
+							<input type="text" id="pword" name="password" placeholder="Your current Password.." th:object="${currentPassword}">
+
+							<br>
+
+						<label for="lname">Updated Password</label>
+							<input type="text" id="upword" name="updpassword" placeholder="New Password.." th:object="${updatedPassword}">
+
+							<br>
+				            <br>
+					-->
+							<!-- Input fields for passwords need to be hidden from user -->
+							<!-- Password validator may be needed -->
+							<!-- Maybe an extra confirm new password field? -->
+
+
+						</form>
+                            </div>
+                      
+					</div>
+
+				</div>
+
+			</div>
+
+
+	<!-- <script type="text/javascript" src="js/jquery.js"></script>
+ 	<script type="text/javascript" src="js/fadeaffects.js"></script> -->
+
+		</body>
+	
+</html>

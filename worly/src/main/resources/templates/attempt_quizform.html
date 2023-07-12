@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+    table, th, td {
+  		border: 1px solid black;
+}
+</style>
+<meta charset="ISO-8859-1">
+<title>Quiz Templates</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Current Quizzes</h1>
+		<form action="#" th:action="@{/api/attempt/quiz}" method="get" th:object="${request}">
+			<label>Select a Quiz Template to view:</label> 
+			
+			<table style="width:100%">
+				<tr> <!--Top row - column names-->
+        			<th scope="col">Quiz Name</th>
+       				<th scope="col">ID</th>
+    			</tr> <!--Quiz template row generator-->
+				<tr th:each="quiztemplate : ${qtRowModelList}">	
+					<td th:text = ${quiztemplate.quizName} />
+					<td th:text = ${quiztemplate.quizTemplateID} />
+					<td> <a th:text = ${quiztemplate.buttonText} th:href= ${quiztemplate.buttonValue} >
+					<td th:text = ${quiztemplate.buttonValue} /> <!--can delete this row later on-->
+				</tr>	
+
+				
+			</table>
+		
+		</form>
+		
+	</div>
+</body>
+</html>

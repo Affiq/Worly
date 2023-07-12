@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+    table, th, td {
+  		border: 1px solid black;
+}
+</style>
+<meta charset="ISO-8859-1">
+<title th:text=${quizTemplate.quizName}></title>
+</head>
+<body>
+	<div align="center">
+		<h1 th:text = "'Editing: ' + ${quizTemplate.quizName}" ></h1>
+			<form action="#" th:action="@{/api/quiztemplates/releasequiz?qtid=}+${quizTemplate.quizTemplateID}" method="post">
+				<button>Release Quiz</button>
+			</form>
+			</br>
+			
+			<!--This table generates all questions for this quiz-->
+			
+				<table style="width:100%" th:each="question : ${questions}">
+					<tr >	
+						<td th:text = ${question.category}  />
+						<td style="width:10%"> <a th:text = "'edit'"
+						th:href= "'editquestion?questionid=' + ${question.questionID}" > </td>
+					</tr>	
+					<tr >	
+						<td th:text = ${question.questionText}  />
+					</tr>
+					
+					<!--This table generates all answers for a specific question-->
+					<table style="width:100%" th:each="answer : ${question.answers}">	
+						<td th:text="${answer.answerText}" />
+						<td th:text="${answer.cfpValue}" style="width:10%" />
+						<td th:text="${answer.flag}" style="width:10%"/>				
+								
+						<!--This table generates all recommendations for a specific answer-->
+						<table style="width:100%" th:each="recommendation : ${answer.recommendations}">	
+							<td th:text="${recommendation.recommendationText}" />	
+						</table>
+				</table>
+			</br> <!--Space between each question table-->
+			</table>
+			</br>
+			
+			<form action="#" th:action="@{/api/quiztemplates/editquiz?qtid=}+${quizTemplate.quizTemplateID}" method="post"
+			th:object="${questionRequest}">
+				<table> <!--Add new question table-->
+					<tr><td> <label>Question Text:</label> <input type="text" th:field="*{questionText}"></input> </tr>
+					<tr><td> <label>Category:</label> <input type="text" th:field="*{category}"></input> </tr>
+					<tr><td> <button type="submit">Add Question</button> </tr>
+				</table>
+			</form>
+		
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+ <link rel="stylesheet" type="text/css" href="/css/Quiz_F.css"></link>
+  
+
+    
+  <meta charset="utf-8">
+  <title>  </title>
+</head>
+  <body>
+ <div class="navbar">
+            <div class="logo">
+                <form>
+                    <input Name="IB1" type="Image" img src="/photos/Home/Worly-Logo-F.png" th:href="@{/api/home}" height="80" width="80" alt="Application Logo">
+                </form>
+            </div>
+            
+            <a class="btn"  th:href="@{/api/attemptquiz/choosequiz}" >Quiz</a>
+                <a class="btnnew" th:href="@{/api/details}" >Change details</a>
+                <a class="btnnew" th:href="@{/api/home}"  >LogOut</a>
+                <!-- <a class="btnnew" href="./aboutus.html" target="_blank">About Us</a> -->
+               
+
+                <!-- target="_blank" to make the user land onto a new tab for a better user experience -->
+        </div>
+        <br>
+      <div id = "Container">
+        <div id = "CenterElement">
+            <div id="column1"></div>
+            <div id="column2">
+              <form th:action="@{submit?qtid=}+${quizTemplate.quizTemplateID}" method="post" id="quiz">
+                      <ol>
+
+						<!-- List item created for each question, along with all it's answers -->
+							<li th:each="question, stat : ${questions}">
+                              <h3 th:text = "${question.questionText}"></h3>
+                              <div th:each="answer :${question.answers}">
+                                  <input type="radio" th:name="${question.questionID}" required
+                                  		th:id="${answer.answerID}" th:value="${answer.answerID}"
+                                  		th:field="${quizAttemptForm.questionAttemptList[__${stat.index}__].answerID}"/>
+                                  <label th:text="${answer.answerText}" th:for="${answer.answerID}"> </label>
+                              </div>
+                             </li>
+                      </ol>
+                      <input type="submit" value="Submit Quiz" />
+          		</form>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
+

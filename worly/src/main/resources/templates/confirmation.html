@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/confrimation.css">
+<title>confirmation</title>
+</head>
+<body></body>
+
+<center>
+
+
+	<div class="container2">
+		<div id="square"></div>
+		<div class="front">
+			<h1 class="logo"></h1>
+			<h1>
+				Welcome! <span th:text="${request.firstName}"></span><br />
+			</h1>
+			<h3>Thank you for your details! You should recieve a
+				confirmation email for your account. Have fun saving the world of
+				climate change with worly!</h3>
+				
+			<div class="actions">
+				<a th:href="@{/api/sign}" type="button">Login Page</a>
+			</div>
+
+		</div>
+
+	</div>
+
+
+</center>

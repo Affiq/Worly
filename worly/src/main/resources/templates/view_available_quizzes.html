@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+       <link rel="stylesheet" type="text/css" href="/css/quiz.css"></link> 
+<meta charset="ISO-8859-1">
+<title>Quiz Templates</title>
+</head>
+<body>
+
+		
+		
+		<div class="navbar">
+            <div class="logo">
+                <form>
+                    <input Name="IB1" type="Image" img src="/photos/Home/Worly-Logo-F.png" th:href="@{/api/home}" height="80" width="80" alt="Application Logo">
+                </form>
+            </div>
+            
+            <a class="btn"  th:href="@{/api/attemptquiz/choosequiz}" >Quiz</a>
+                <a class="btnnew" th:href="@{/api/details}" >Change details</a>
+                <a class="btnnew" th:href="@{/api/home}"  >LogOut</a>
+                <!-- <a class="btnnew" href="./aboutus.html" target="_blank">About Us</a> -->
+               
+
+                <!-- target="_blank" to make the user land onto a new tab for a better user experience -->
+        </div>
+        <br>
+        
+        
+        <div class= "quiz">
+        
+        <h1>Current Quizzes</h1>
+
+		<form action="#" th:action="@{/api/attemptquiz}" method="post" th:object="${quizList}">
+			
+			<table style="width:100%">
+				<tr> <!--Top row - column names-->
+        			<th scope="col">Quiz Name</th>
+       				<th scope="col">Button</th>
+    			</tr> <!--Available quiz row generator-->
+				<tr th:each="quiz : ${quizList}">	
+					<td th:text = ${quiz.quizName} />
+					<td> <button type="submit" th:formaction="@{/api/attemptquiz/attempt?qtid=}+${quiz.quizTemplateID}">Take the Quiz</button>
+					</td>
+				</tr>
+			</table>
+		
+		</form>
+		</div>
+		 
+</body>
+</html>

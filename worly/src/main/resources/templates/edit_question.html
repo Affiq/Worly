@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+    table, th, td {
+  		border: 1px solid black;
+}
+</style>
+<meta charset="ISO-8859-1">
+<title> Editing Question</title>
+</head>
+<body>
+	<div align="center">
+		<h1 th:text="'EDIT: ' + ${question.questionText}">  </h1>
+			
+					<table style="width:100%" th:object="${question}">
+						<form action='#' th:action="@{/api/quiztemplates/editquestion?answerid=}+${question.questionID}" method="post">
+							<tr> <td> <input type="text" th:value="${question.category}" th:field="*{category}">
+							</input> </td> </tr>
+							<tr> <td> <input type="text" th:value="${question.questionText}" th:field="*{questionText}"> 
+							</input> </td> </tr>
+							<tr> 
+								<td> <button type="submit" th:formaction="@{/api/quiztemplates/editquestion?questionid=}+${question.questionID}">Update Question</button> </td>
+								<td> <button type="submit" th:formaction="@{/api/quiztemplates/deletequestion?questionid=}+${question.questionID}">Delete Question</button></td> 
+							</tr>
+						</form>
+					</table>
+					</br>
+					</br>
+					</br>
+			
+					<!--This table generates all answers-->
+					<table style="width:100%" th:each="answer, stat : ${questionModel.answers}" th:object="${questionModel}" >	
+					<form action="#" th:action="@{/api/quiztemplates/editquestion?answerid=}+${answer.answerID}" method="post">
+					<tr >
+						<td th:object="${answer}">  <label>Answer Text:</label>
+						<input type="text" th:value="${answer.answerText}" th:name="|answerText|" th:field="${questionModel.answers[__${stat.index}__].answerText}"></input> </td>
+						<td style="width:10%"> <label>Carbon Footprint Value:</label>
+						<input type="text" th:value="${answer.cfpValue}" th:name="|cfpValue|" th:field="${questionModel.answers[__${stat.index}__].cfpValue}"></input> </td>
+						<td style="width:20%"/><label>Right Answer:</label>
+						<input type="checkbox" th:value="${answer.flag}" th:name="|flag|" th:field="${questionModel.answers[__${stat.index}__].flag}"></input></td>		
+						<td style="width:17%"><button type="submit" th:formaction="@{/api/quiztemplates/deleteanswer?answerid=}+${answer.answerID}">Delete Answer</button></td>
+					</tr>	
+					<tr th:each="recommendation, stat2 : ${answer.recommendations}">		
+						<!--This table generates all recommendations for each answer-->
+						<table style="width:100%">	
+							<!--id input form and readonly needed for the recommendation id in the form-->
+							<td ><input type="text" th:value="${recommendation.recommendationID}" readonly
+							th:field="${questionModel.answers[__${stat.index}__].recommendations[__${stat2.index}__].recommendationID}"> </input> Not Edittable</td>
+							<td> <label>Recommendation:</label>
+							<input type="text" th:value="${recommendation.recommendationText}" 
+							th:field="${questionModel.answers[__${stat.index}__].recommendations[__${stat2.index}__].recommendationText}"></input> </td>
+							<td style="width:17%"><button type="submit" th:formaction="@{/api/quiztemplates/deleterecommendation?recommendationid=}+${recommendation.recommendationID}">Delete Recommendation</button></td>
+						</table>
+					</tr>
+					<tr>
+						<table style="width:100%">
+						<td> 
+							<button type="submit"  name="action" th:formaction="@{/api/quiztemplates/addrecommendation?answerid=}+${answer.answerID}">Add Recommendation</button>
+							<button type="submit" name="action" th:formaction="@{/api/quiztemplates/editanswer?answerid=}+${answer.answerID}">Update Answer and Recommendations</button>
+						</td>
+						</table>
+					
+					</tr>
+						</br>
+						</br>
+						</br>
+					
+					</form>
+					</table>
+					</br>
+					</br>
+					</br>
+					
+		
+			<form action="#" th:action="@{/api/quiztemplates/addanswer?questionid=}+${question.questionID}" method="post"
+			th:object="${newAnswerRequest}">
+				<table> <!--Add new question table-->
+					<tr><td> <label>Answer Text:</label> <input type="text" th:field="*{answerText}"></input> </tr>
+					<tr><td> <label>Carbon Footprint Value:</label> <input type="text" th:field="*{cfpValue}"></input> </tr>
+					<tr><td> <label>Right Answer: </label><input type="checkbox" th:field="*{flag}"></input></td></tr>
+					<tr><td> <button type="submit" >Add Answer</button> </tr>
+				</table>
+			</form>
+		
+		
+	</div>
+</body>
+</html>

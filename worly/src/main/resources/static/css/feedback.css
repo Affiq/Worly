@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+
+} 
+
+
+.banner-wrap {
+    background: url(/photos/Feedback/goal13.png) 0 0 no-repeat;
+    padding: 0;
+    margin: 0;
+    height: 80vh;
+    position:relative;
+
+}
+
+.banner-wrap::after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    content: '';
+    background-color: darkslategrey;
+    z-index: -1;
+}
+
+.banner-wrap .navbar .logo img{
+    height: 80px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 56px 0px 56px;
+    align-items: center;
+    position: fixed;
+    
+}
+.banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 43px)
+}
+.banner-container h1 {
+    font-size: 3.125rem;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+
+.banner-container h2 {
+    font-size: 1.625rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 16px 155px 16px 155px;
+ 
+}
+h1 {
+    font-size: 3.125rem;
+    font-weight: 600;
+
+}
+h2 {
+    font-size: 1.625rem;
+    font-weight: 400;
+    
+}
+
+.banner-container h3 {
+    
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 0px 47.5px 20px 47.5px;    
+
+}
+
+
+.banner-container form {
+    display: flex;
+}
+
+.banner-container input {
+    height: 60px;
+    width: 450px;
+    border: none;
+    color: grey;
+    padding-left: 8px;
+
+}
+
+.banner-container button {
+    border: none;
+    padding: .7rem 30px;
+    height: 60px;
+    background-color: seagreen;
+    font-size: 26px;
+}
+.btn {
+    background-color: seagreen;
+    border-radius: 3px;
+    padding: 7px 17px;
+}
+.btnnew {
+    background-color: seagreen;
+    border-radius: 3px;
+    padding: 7px 17px;
+}
+.footer {
+    background: darkslategrey;
+    align-items: center;
+    padding: 70px 110px;
+    border-top: 8px solid; 
+ }
+ .footer ul {
+     list-style-type: none;
+ }
+
+ .footer ul li{
+     cursor: pointer;
+ }
+
+ .footer ul li:hover {
+     cursor: pointer;
+     text-decoration: underline;
+ }

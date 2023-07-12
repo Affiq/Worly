@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="this is a User dashboard after login">
+<meta name="author" content="Group32">
+<meta http-equiv="refresh" content="1000">
+	<title>Dashboard</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+	<script type="text/javascript" src="js/custom.js"></script>
+</head>
+
+<body>
+	Welcome <span th:text="${session.email}">nobody</span>
+	<br/>
+	Go to <a th:href="@{/api/attemptquiz/choosequiz}"> Quizzes </a>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/confrimation.css">
+<title>Worly</title>
+</head>
+<body></body>
+
+<center>
+
+
+	<div class="container2">
+		<div id="square"></div>
+		<div class="front">
+			<h1 class="logo"></h1>
+			<h3><span th:text="${msg.msg}"></span></h3>
+				
+			<div class="actions">
+				<a th:href="@{/api/sign}" type="button">Login Page</a>
+			</div>
+
+		</div>
+
+	</div>
+
+
+</center>

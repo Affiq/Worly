@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <link rel="stylesheet" type="text/css" href="/css/Quiz_F.css"></link>
+  
+  <meta charset="utf-8">
+  <title>  </title>
+</head>
+  <body>
+  
+  
+  
+  <div class="navbar">
+            <div class="logo">
+                <form>
+                    <input Name="IB1" type="Image" img src="/photos/Home/Worly-Logo-F.png" th:href="@{/api/home}" height="80" width="80" alt="Application Logo">
+                </form>
+            </div>
+            
+            <a class="btn"  th:href="@{/api/attemptquiz/choosequiz}" >Quiz</a>
+                <a class="btnnew" th:href="@{/api/details}" >Change details</a>
+                <a class="btnnew" th:href="@{/api/home}" >LogOut</a>
+                <!-- <a class="btnnew" href="./aboutus.html" target="_blank">About Us</a> -->
+               
+
+                <!-- target="_blank" to make the user land onto a new tab for a better user experience -->
+        </div>
+      <div id = "Container">
+        <div id = "CenterElement">
+            <div id="column1"></div>
+            <div id="column2">
+            		  
+            		  <h3 th:text = "'You answered ' + ${totalCorrectAnswers} + '/' +  ${totalQuestions} + ' correctly!'"> </h3>
+            		  <h3 th:text = "'Your carbon footprint score is: ' + ${score}"> </h3>
+            		  
+                      <ol>
+
+						<!-- List item created for each question, along with all it's answers -->
+							<li th:each="question, stat : ${questions}">
+                              <h3 th:text = "${question.questionText}"></h3>
+                              <div th:each="answer :${question.answers}">
+                                   
+                              <script th:inline="javascript">
+	 							/*<![CDATA[*/
+								 
+	 							var flag = /*[[${answer.flag}]]*/ 'default';
+	 							var answerText = /*[[${answer.answerText}]]*/ 'default';
+	 							var cfpValue = /*[[${answer.cfpValue}]]*/ 'default';
+	 							var chosenAnswerText = /*[[${quizAttemptForm.questionAttemptList[__${stat.index}__].answerText}]]*/ 'default';
+	 							var recommendationList = /*[[${answer.recommendations}]]*/ 'default';
+	 							
+	 								if (answerText==chosenAnswerText && flag==true) { // if user has chosen right answer...
+		 								document.write("<div style=\"background-color:chartreuse;\">"+ answerText + "     " + cfpValue + " </div>");
+	 								}
+	 								else if (answerText==chosenAnswerText && flag==false) { // if user has chosen wrong answer..., display the recommendations as well
+		 								document.write("<div style=\"background-color:tomato;\">"+ answerText + "     " + cfpValue + " </div>");
+	 									
+	 								// recommendation writer - uses &nbsp which is the nonbreakingspace character
+	 									for (var i=0; i!=recommendationList.length; i++)
+	 											document.write("<div style=\"background-color:DarkOrange;\">" + " &nbsp  &nbsp  &nbsp. " + recommendationList[i].recommendationText + "</div>");
+	 				
+	 								}
+	 		 						else if (flag==true) { // the right answer that hasn't been chosen is still displayed
+		 								document.write("<div style=\"background-color:chartreuse;\">"+ answerText + "     " + cfpValue + " </div>");
+	 		 						}
+	 		 						else{
+		 								document.write("<div style=\"background-color:transparent;\">"+ answerText + " </div>");
+	 		 						}
+	 									document.write("</br>");
+	 							
+							  	/*]]>*/
+							  </script>
+                              	
+                              </div>
+                             </li>
+                      </ol>
+            </div>
+            <div id="column3"></div>
+        </div>
+       
+    </div>
+  </body>
+</html>

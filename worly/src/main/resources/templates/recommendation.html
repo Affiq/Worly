@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worly | Recommendation</title>
+    <link rel="icon" href="/photos/recommendation/Worly-Logo-F.png">
+<link rel="stylesheet" type="text/css" href="/css/recommendation.css"></link> 
+
+  <!--  <script defer src="javascript.js">    </script>  --> 
+</head>
+<body>
+    <div class="banner-wrap">
+        <div class="navbar">
+            <div class="logo">
+                <img src="/photos/recommendation/Worly-Logo-F.png" alt="Application Logo">
+
+            </div>
+               <a class="btn"  th:href="@{/api/attemptquiz}" >Quiz</a>
+                <a class="btnnew" th:href="@{/api/details}" >Change details</a>
+                <a class="btnnew" href="./recommendation.html" target="_blank">Result</a>
+                <!-- Also add links to results page -->
+                
+                <a class="btnnew" href="./recommendation.html" target="_blank">Logout</a>
+                <!-- <a class="btnnew" href="./aboutus.html" target="_blank">About Us</a> -->
+
+                <!-- target="_blank" to make the user land onto a new tab for a better user experience -->
+
+        </div>
+        <div class="banner-container">
+            <h1 class="">Personalised Recommendations</h1>
+            <h2 class="">Change starts with YOU</h2>
+        <!--    <div id="error"></div> -->
+        <div id="error"></div>
+
+            <form id="form" action="/" method="GET">
+              <div>
+                <label for="text"></label> <!-- text label -->
+                <input id="text" text="text" type="text" placeholder="Got an Idea? Share it with us" required>
+                
+              </div>
+             
+              <button type="submit">Submit</button>
+            </form>
+        <!--    <form>
+                <input type="text" placeholder="Got an Idea? Share it with us">
+
+                <button>
+                    Submit
+                </button>
+            </form> -->
+        </div>
+        
+    </div>
+    <!-- <img src="./data-financial-chart.jpg" alt="results cover page"> -->
+    <div class="info-container">
+        <div class="info">
+            <h1> Here's what we have found:</h1>
+            <h2> Suggestion 1</h2>
+            <h2> Suggestion 2</h2>
+
+        </div>
+        <div class="tv-container">
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="footer">
+        <ul>
+            <li>Home Page</li>     
+            <li>Quiz Page</li>      
+            <li>Log-In/Sign-Up</li> 
+            <li>Help Center</li> 
+            <li>FAQ</li>     
+            <li>About Us</li>      
+            <li>Contact Us</li>      
+              </ul>
+
+    </div>
+ 
+
+    
+
+    <a href="./Recommendation.html" target="_blank">Recommendation</a>
+  
+</body>
+</html> 
