@@ -37,6 +37,9 @@ spring.jpa.hibernate.ddl-auto = update
 
 <p> So, making the adjustments for this example should eventually look like: </p> 
 
+![](https://github.com/Affiq/Worly/blob/main/Images/WorlyConn.png)
+
+
 ```
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring.datasource.url = jdbc:mysql://127.0.0.1:3306/Worly
