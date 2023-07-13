@@ -71,5 +71,13 @@ SET GLOBAL time_zone = '+3:00';;
 2023-07-13 20:08:11.748  INFO 8476 --- [  restartedMain] com.example.worly.WorlyApplication       : Started WorlyApplication in 17.927 seconds (JVM running for 19.282)
 ```
 
+<h2> Accessing the Website </h2>
+<p> To access the main sign-in page of the website, simply navigate to <a href="http://localhost:8080/api/sign"> http://localhost:8080/api/sign </a>. From here, a user can login with a regular account or as an administrator. A default administrator with username "name" and password "password" is made by default through the AddAdmin.java class, located inside the com.example.worly package. This can be adjusted accordingly to your needs with appropriate details. The constructor will be defined as below. To disable an admin being added every time on start-up, simply set the addAdmin boolean to false. From here, a user can login or signup. </p>
+
+```
+User adminUser = new User("name","surname","email@gmail.com","password","postcode", UserRole.ADMIN); // Do not change the last enum parameter
+```
+
+
 <h2> Controller Sidenote </h2>
 <p> Typically, a Front-End server such as react will handle the page rendering and display, which will send HTTP requests (usually Axiom for React JS) to the Back-End server (Spring Boot). However, due to time constraints, the user will directly interact with the backend which is then responsible for both display and business logic. SpringBoot utilises a technology called Thymeleaf and will render the HTML pages we have configured in the Resources folder as a result. </p>
