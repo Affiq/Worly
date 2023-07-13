@@ -40,7 +40,7 @@ spring.jpa.hibernate.ddl-auto = update
 
 ```
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
-spring.datasource.url = jdbc:mysql://127.0.0.1:3306/Worly
+spring.datasource.url = jdbc:mysql://127.0.0.1:3306/worlyschema
 spring.datasource.username = root
 spring.datasource.password = password
 
