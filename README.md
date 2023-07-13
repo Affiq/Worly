@@ -81,6 +81,7 @@ SET GLOBAL time_zone = '+3:00';;
 User adminUser = new User("name","surname","email@gmail.com","password","postcode", UserRole.ADMIN); // Do not change the last enum parameter
 ```
 
+<p> Administrators are redirected to a page where they are able to create quiz templates, questions and answers for new quizzes before releasing them to the public. Regular users on the other hand can attempt quizzes, see their results and estimated carbon footprint and see past quiz attempts. </p>
 
 <h2> Controller Sidenote </h2>
 <p> Typically, a Front-End server such as react will handle the page rendering and display, which will send HTTP requests (usually Axiom for React JS) to the Back-End server (Spring Boot). However, due to time constraints, the user will directly interact with the backend which is then responsible for both display and business logic. SpringBoot utilises a technology called Thymeleaf and will render the HTML pages we have configured in the Resources folder as a result. </p>
