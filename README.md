@@ -12,6 +12,8 @@ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link fai
 
 <p> This tutorial will demonstrate how to create a MySQL database using MySQL workbench. Navigate to the workbench and create a new connection The name, user and password can be adjusted accordingly, but the details will need to be remembered as we need to configure our application.properties file to be compatible with our newly created database. After doing so, we will need to create a new Schema (which is a collection of databases /tables) - simply right-click the Schema tab and create a new Schema. For demonstration purposes, we will name this Schema "worlyschema". Note that MySQL only allows lower-case for schema names. After doing so, we now have a new connection to our database, as well as a Schema we can work with.  </p>
 
+![](https://github.com/Affiq/Worly/blob/main/Images/WorlyConn.png)
+
 ![](https://github.com/Affiq/Worly/blob/main/Images/MySQL1.png)
 
 <p> After creating a new MySQL database, we will need to locate the application.properties file located under the resources folder. In here, we can configure some properties of our application. The application.properties file should be configured as the following: </p>
