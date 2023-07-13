@@ -58,6 +58,18 @@ spring.jpa.hibernate.ddl-auto = update
 Caused by: com.mysql.cj.exceptions.InvalidConnectionAttributeException: The server time zone value 'GMT Summer Time' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the 'serverTimezone' configuration property) to use a more specific time zone value if you want to utilize time zone support.
 ```
 
+<p> This can be resolved by simply heading back to MySQL workbench, navigating to the appropriate database (using the USE statement) and configuring the global time using the command: </p>
 
-<h2> Controller Overview </h2>
-<p> Typically, a Front-End server such as react will handle the page rendering and display, which will send HTTP requests (usually Axiom for React JS) to the Back-End server (Spring Boot). However, due to time constraints, the user will directly interact with the backend which is then responsible for both display and business logic. </p>
+```
+USE worlyschema;
+SET GLOBAL time_zone = '+3:00';;
+```
+
+<p> Finally, the console should return a success message which should look like the following: </p>
+
+```
+2023-07-13 20:08:11.748  INFO 8476 --- [  restartedMain] com.example.worly.WorlyApplication       : Started WorlyApplication in 17.927 seconds (JVM running for 19.282)
+```
+
+<h2> Controller Sidenote </h2>
+<p> Typically, a Front-End server such as react will handle the page rendering and display, which will send HTTP requests (usually Axiom for React JS) to the Back-End server (Spring Boot). However, due to time constraints, the user will directly interact with the backend which is then responsible for both display and business logic. SpringBoot utilises a technology called Thymeleaf and will render the HTML pages we have configured in the Resources folder as a result. </p>
